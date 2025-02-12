@@ -1,0 +1,33 @@
+{
+  "sorts": [
+    "bubblesort_ascend",
+    "heapsort_ascend",
+    "insertsort_ascend",
+    "mergesort_ascend",
+    "quicksort_ascend",
+    "selectsort_ascend"     
+  ],
+  "cases": [ 
+    {
+      "type": "random",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "sample": 3
+    },
+    {
+      "type": "random",
+      "min": 100,
+      "max": 150,
+      "step": 10,
+      "sample": 3 
+    },
+    {
+      "type": "random",
+      "min": 1000,
+      "max": 1500,
+      "step": 100,
+      "sample": 3 
+    }
+  ] 
+}
