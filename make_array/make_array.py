@@ -6,20 +6,26 @@ num1 = 1
 num2 = 2
 
 def random_case(length):
+    seed = random.randint(0, 99999)
+    random.seed(seed)
     array = [random.randint(0, max_value) for _ in range(length)]
-    return array
+    return array, seed
 
 def ascend_case(length):
+    seed = random.randint(0, 99999)
+    random.seed(seed)
     array = [random.randint(0, max_value) for _ in range(length)]
-    return sorted(array)
+    return sorted(array), seed
 
 def descend_case(length):
+    seed = random.randint(0, 99999)
+    random.seed(seed)
     array = [random.randint(0, max_value) for _ in range(length)]
-    return sorted(array, reverse=True)
+    return sorted(array, reverse=True), seed
 
 def equal_case(length):
     array = [equal_value for _ in range(length)]
-    return array
+    return array, seed
 
 def jagg_case(length):
     array = []
@@ -51,15 +57,16 @@ def generate_case():
     length = int(input("Enter length:"))
 
     array = [0] * length
+    seed
 
     if choice == 'R':
-        array = random_case(length)
+        array, seed = random_case(length)
     elif choice == 'E':
-        array = equal_case(length)
+        array, seed = equal_case(length)
     elif choice == 'A':
-        array = ascend_case(length)
+        array, seed = ascend_case(length)
     elif choice == 'D':
-        array = descend_case(length)
+        array, seed = descend_case(length)
     elif choice == 'J':
         array = jagg_case(length)
     elif choice == 'S':
