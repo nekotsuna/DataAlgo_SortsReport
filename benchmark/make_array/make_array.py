@@ -75,5 +75,3 @@ def generate_case():
         print("Invalid input")
 
     return array
-
-print(generate_case())
