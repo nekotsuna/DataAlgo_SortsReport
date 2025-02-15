@@ -2,6 +2,7 @@ import sort_algorithms
 import time
 import json
 import random
+import copy
 
 def random_case(length):
   sample = []
@@ -25,8 +26,10 @@ for test_case in data["cases"]:
   for length in range(test_case["min"], test_case["max"], test_case["step"]):
     for sample_id in range(test_case["sample"]):
       sample = create_sample(length)
+      sorted_sample = sorted(sample)
 
       key = test_case["type"] + "_" + str(length) + "_" + str(sample_id)
+      print(key)
       result[key] = {}
       result[key]["type"] = test_case["type"]
       result[key]["length"] = length
@@ -34,9 +37,14 @@ for test_case in data["cases"]:
       result[key]["result"] ={}
       
       for sort_name in sorts:
+        sample_copied = copy.copy(sample)
+
         start = time.process_time()
-        sorts[sort_name](sample)
+        ret_list = sorts[sort_name](sample_copied)
         end = time.process_time()
+
+        if(ret_list !=  sorted_sample):
+          print("error: return list is not matched to sample list")
 
         trial_time = end - start
         result[key]["result"][sort_name] = trial_time
