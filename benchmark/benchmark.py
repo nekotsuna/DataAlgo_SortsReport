@@ -1,15 +1,8 @@
 import sort_algorithms
 import time
 import json
-import random
 import copy
-
-def random_case(length):
-  sample = []
-  for i in range(length):
-    sample.append(random.randrange(0, length, 1))
-  return sample
-  
+from make_array import make_array as make_sample
 
 data_file = open("data.json", "r")
 data = json.load(data_file)
@@ -21,13 +14,12 @@ for sort in data["sorts"]:
 result = {} 
 
 for test_case in data["cases"]:
-  create_sample = random_case
+  create_sample = getattr(make_sample, test_case["function"])
 
   length = test_case["min"]
   while length < test_case["max"]:
-    print(length)
     for sample_id in range(test_case["sample"]):
-      sample = create_sample(length)
+      sample, seed = create_sample(length)
       sorted_sample = sorted(sample)
 
       key = test_case["type"] + "_" + str(length) + "_" + str(sample_id)
@@ -35,6 +27,7 @@ for test_case in data["cases"]:
       result[key] = {}
       result[key]["type"] = test_case["type"]
       result[key]["length"] = length
+      result[key]["seed"] = seed
       result[key]["sample_id"] = sample_id
       result[key]["result"] ={}
       
