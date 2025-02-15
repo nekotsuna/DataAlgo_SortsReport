@@ -23,7 +23,9 @@ result = {}
 for test_case in data["cases"]:
   create_sample = random_case
 
-  for length in range(test_case["min"], test_case["max"], test_case["step"]):
+  length = test_case["min"]
+  while length < test_case["max"]:
+    print(length)
     for sample_id in range(test_case["sample"]):
       sample = create_sample(length)
       sorted_sample = sorted(sample)
@@ -48,6 +50,8 @@ for test_case in data["cases"]:
 
         trial_time = end - start
         result[key]["result"][sort_name] = trial_time
+
+    length = eval("length" + test_case["step"]) 
 
 result_file = open("result.json", "w")
 json.dump(result, result_file)
