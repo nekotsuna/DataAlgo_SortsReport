@@ -4,8 +4,11 @@ import json
 import copy
 from make_array import make_array as make_sample
 
+benchmark_start = time.time()
+
 data_file = open("data.json", "r")
 data = json.load(data_file)
+
 
 sorts = {}
 for sort in data["sorts"]:
@@ -42,9 +45,17 @@ for test_case in data["cases"]:
           print("error: return list is not matched to sample list")
 
         trial_time = end - start
+        print("   " + sort_name + " is completed: " + str(trial_time) + "s")
+        print("   " + "seed" + str(seed))
         result[key]["result"][sort_name] = trial_time
+
+      result_file = open("result.json", "w")
+      json.dump(result, result_file)
 
     length = eval("length" + test_case["step"]) 
 
 result_file = open("result.json", "w")
 json.dump(result, result_file)
+
+benchmark_end = time.time()
+print(str(benchmark_end - benchmark_start))
