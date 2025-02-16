@@ -42,7 +42,14 @@ for test_case in data["cases"]:
         end = time.process_time()
 
         if(ret_list !=  sorted_sample):
+          print("sample list")
+          print(sample)
+          print("sorted list")
+          print(sorted_sample)
+          print("return list")
+          print(ret_list)
           print("error: return list is not matched to sample list")
+          quit()
 
         trial_time = end - start
         print("   " + sort_name + " is completed: " + str(trial_time) + "s")
