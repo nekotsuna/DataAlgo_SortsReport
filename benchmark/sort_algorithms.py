@@ -78,6 +78,7 @@ def insertsort_ascend(list):
 def mergesort_ascend(list):
   if len(list) <= 1:
     return list
+
    
   ret = []
   left = []
@@ -94,6 +95,7 @@ def mergesort_ascend(list):
 
   left = mergesort_ascend(left)
   right = mergesort_ascend(right)
+
 
   left_index = 0
   left_length = len(left)
@@ -131,7 +133,7 @@ def quicksort_ascend(list):
   right = []
   center = []
 
-  for i in range(1, length):
+  for i in range(0, length):
     if list[i] < pivot:
       left.append(list[i])
     elif list[i] > pivot:
