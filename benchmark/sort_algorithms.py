@@ -126,10 +126,10 @@ def quicksort_ascend(list):
   if length <= 1:
     return list
 
-  pivot = list[0]
+  pivot = list[int(length / 2)]
   left = []
   right = []
-  center = [pivot]
+  center = []
 
   for i in range(1, length):
     if list[i] < pivot:
